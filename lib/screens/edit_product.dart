@@ -202,6 +202,7 @@ class _EditProductState extends State<EditProduct> {
               height: 10.0,
             ),
             TextFormField(
+                maxLines: 3,
                 controller: ingredientsController,
                 onChanged: (value) => productProvider.changeIngredients(value),
                 // maxLines: 5,
@@ -242,6 +243,7 @@ class _EditProductState extends State<EditProduct> {
               height: 10.0,
             ),
             TextFormField(
+                maxLines: 4,
                 controller: aboutRecepieController,
                 onChanged: (value) => productProvider.changeAboutRecepie(value),
                 // maxLines: 5,
@@ -281,6 +283,7 @@ class _EditProductState extends State<EditProduct> {
               height: 10.0,
             ),
             TextFormField(
+                maxLines: 5,
                 controller: cookingMethodController,
                 onChanged: (value) =>
                     productProvider.changeCookingMethod(value),
@@ -333,6 +336,16 @@ class _EditProductState extends State<EditProduct> {
                             TextButton(
                               onPressed: () {
                                 productProvider.saveProduct();
+
+                                Fluttertoast.showToast(
+                                    msg: "Changes saved!",
+                                    toastLength: Toast.LENGTH_SHORT,
+                                    gravity: ToastGravity.BOTTOM,
+                                    timeInSecForIosWeb: 1,
+                                    backgroundColor: Colors.red,
+                                    textColor: Colors.white,
+                                    fontSize: 12.0);
+
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => HomeScreen()));
                               },
@@ -359,6 +372,16 @@ class _EditProductState extends State<EditProduct> {
                             onPressed: () {
                               productProvider
                                   .removeProduct(widget.product.recepieId);
+
+                              Fluttertoast.showToast(
+                                  msg: "Deleted Sucessfully!!!",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.BOTTOM,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: Colors.red,
+                                  textColor: Colors.white,
+                                  fontSize: 12.0);
+
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => HomeScreen()));
                             },

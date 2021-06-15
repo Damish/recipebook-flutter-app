@@ -14,8 +14,6 @@ class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
 
   final images = [
-    // "https://firebasestorage.googleapis.com/v0/b/flutterdemo-5bde0.appspot.com/o/uploads%2Fimage_picker637360251351451149.jpg?alt=media&token=b20021cb-01d3-4447-8dde-e943e7710641",
-
     "assets2/breakfast.jpg",
     "assets2/lunch.jpg",
     "assets2/dinner.jpg",
