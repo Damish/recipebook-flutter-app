@@ -3,6 +3,7 @@ import 'package:flutterproject3/screens/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterproject3/screens/edit_product.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:loading_animations/loading_animations.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -49,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.fastfood), label: "Recipes"),
+                icon: Icon(Icons.fastfood), label: "Add item"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.subscriptions), label: "Subscription"),
             BottomNavigationBarItem(
@@ -61,6 +62,11 @@ class _HomeScreenState extends State<HomeScreen> {
             setState(() {
               selectedIndex = index;
             });
+            print("selected index" + this.selectedIndex.toString());
+            if (selectedIndex == 1) {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => EditProduct('')));
+            }
           },
           type: BottomNavigationBarType.fixed,
         ),
@@ -381,6 +387,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               )
-            : Center(child: CircularProgressIndicator()));
+            // : Center(child: CircularProgressIndicator()));
+            : Center(
+                child: LoadingBouncingGrid.square(
+                backgroundColor: Colors.blue,
+              )));
   }
 }

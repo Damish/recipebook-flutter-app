@@ -15,6 +15,8 @@ class EditProduct extends StatefulWidget {
 }
 
 class _EditProductState extends State<EditProduct> {
+  int selectedIndex = 1;
+
   final imageController = TextEditingController();
   final recepieNameController = TextEditingController();
   final authorController = TextEditingController();
@@ -74,6 +76,30 @@ class _EditProductState extends State<EditProduct> {
         Provider.of<ProductProvider>(context, listen: false);
 
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.fastfood), label: "Add item"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.subscriptions), label: "Subscription"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings), label: "Settings"),
+        ],
+        iconSize: 30,
+        currentIndex: selectedIndex,
+        onTap: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+          print("selected index" + this.selectedIndex.toString());
+          if (selectedIndex == 0) {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => HomeScreen()));
+          }
+        },
+        type: BottomNavigationBarType.fixed,
+      ),
       appBar: AppBar(
           title: (widget.product == null)
               ? Text('Add Product')

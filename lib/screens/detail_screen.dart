@@ -7,7 +7,7 @@ class DetailScreen extends StatelessWidget {
   final id = 0;
   final image;
   final foodName;
-  final author = "Damish";
+  final author = "test";
   final ingredients = "Recepie ingredients1";
   final aboutRecepie = "Recepie method1";
   final cookingMethod = "Cooking Method";
